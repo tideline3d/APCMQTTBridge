@@ -40,6 +40,11 @@ const snmpTrapCallback = function (error, trap) {
             (async () => {
                 await sendUpsData(device);
             })();
+            setTimeout(function() {
+                (async () => {
+                    await sendUpsData(device);
+                })();
+            }, 5000); //Just in case
         }
     }
 };

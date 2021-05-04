@@ -11,7 +11,6 @@ module.exports = {
         "1.3.6.1.4.1.318.1.1.1.2.3.1.0": "battery.charge",
         "1.3.6.1.4.1.318.1.1.1.2.3.4.0": "battery.voltage",
         "1.3.6.1.4.1.318.1.1.1.2.2.7.0": "battery.voltage.nominal",
-        "1.3.6.1.4.1.318.1.1.1.2.3.5.0": "battery.current",
         "1.3.6.1.4.1.318.1.1.1.2.1.1.0": "battery.status", //See below
         "1.3.6.1.4.1.318.1.1.1.7.2.6.0": "battery.calibration.status", //See below
         "1.3.6.1.4.1.318.1.1.1.2.2.4.0": "battery.replace.status", //See below

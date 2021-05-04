@@ -1,7 +1,7 @@
 // Rename this file to the config.js
 
 //Do not remove this block
-var config = {};
+let config = {};
 config.core = {};
 config.mqtt = {};
 config.devices = {};

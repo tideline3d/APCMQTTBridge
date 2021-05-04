@@ -5,26 +5,24 @@ module.exports = {
     paramList: {
         "1.3.6.1.4.1.318.1.1.1.1.1.1.0": "ups.model",
         "1.3.6.1.4.1.318.1.1.1.1.2.3.0": "ups.serial",
-        "1.3.6.1.4.1.318.1.1.1.3.3.1.0": "input.voltage",
-        "1.3.6.1.4.1.318.1.1.1.3.3.2.0": "input.voltage.maximum",
-        "1.3.6.1.4.1.318.1.1.1.3.3.3.0": "input.voltage.minimum",
-        "1.3.6.1.4.1.318.1.1.1.3.3.4.0": "input.frequency",
         "1.3.6.1.4.1.318.1.1.1.4.3.3.0": "ups.load",
+        "1.3.6.1.4.1.318.1.1.1.1.1.2.0": "ups.id",
+        "1.3.6.1.4.1.318.1.1.1.4.1.1.0": "ups.power.status", //See below
         "1.3.6.1.4.1.318.1.1.1.2.3.1.0": "battery.charge",
         "1.3.6.1.4.1.318.1.1.1.2.3.4.0": "battery.voltage",
         "1.3.6.1.4.1.318.1.1.1.2.2.7.0": "battery.voltage.nominal",
         "1.3.6.1.4.1.318.1.1.1.2.3.5.0": "battery.current",
-        "1.3.6.1.4.1.318.1.1.1.1.1.2.0": "ups.id",
+        "1.3.6.1.4.1.318.1.1.1.2.1.1.0": "battery.status", //See below
+        "1.3.6.1.4.1.318.1.1.1.7.2.6.0": "battery.calibration.status", //See below
+        "1.3.6.1.4.1.318.1.1.1.2.2.4.0": "battery.replace.status", //See below
+        "1.3.6.1.4.1.318.1.1.1.3.3.1.0": "input.voltage",
+        "1.3.6.1.4.1.318.1.1.1.3.3.2.0": "input.voltage.maximum",
+        "1.3.6.1.4.1.318.1.1.1.3.3.3.0": "input.voltage.minimum",
+        "1.3.6.1.4.1.318.1.1.1.3.3.4.0": "input.frequency",
         "1.3.6.1.4.1.318.1.1.1.4.3.1.0": "output.voltage",
         "1.3.6.1.4.1.318.1.1.1.4.3.2.0": "output.frequency",
         "1.3.6.1.4.1.318.1.1.1.4.3.4.0": "output.current",
         "1.3.6.1.4.1.318.1.1.1.5.2.1.0": "output.voltage.nominal",
-
-        "1.3.6.1.4.1.318.1.1.1.4.1.1.0": "ups.power.status",
-        "1.3.6.1.4.1.318.1.1.1.2.1.1.0": "battery.status",
-        "1.3.6.1.4.1.318.1.1.1.7.2.6.0": "battery.calibration.status",
-        "1.3.6.1.4.1.318.1.1.1.2.2.4.0": "battery.replace.status"
-
     },
 
     cmdList: {

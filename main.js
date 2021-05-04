@@ -97,7 +97,7 @@ async function sendUpsData(device) {
 }
 
 function queryUps(device) {
-    return new Promise(function (resolve, reject) {
+    return new Promise(function (resolve) {
         if(sessions[device]===undefined) {
             sessions[device] = snmp.createSession (config.devices[device].ip, config.devices[device].community);
         }

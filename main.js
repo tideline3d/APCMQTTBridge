@@ -121,6 +121,16 @@ function queryUps(device) {
                 retParams[apcConst.paramList[varbinds[i].oid]] = varbinds[i].value.toString();
             }
 
+            retParams['ups.status'] = [
+                apcConst.powerStatus[retParams['ups.power.status']],
+                apcConst.batteryStatus[retParams['battery.status']],
+                apcConst.calibrationStatus[retParams['battery.calibration.status']],
+                apcConst.needBatteryReplaceStatus[retParams['battery.replace.status']],
+
+            ].filter(function(e) { return e!==''}).join(' ');
+
+            retParams['ups.status_text'] = retParams['ups.status'].split(' ').map(e => apcConst.statusTypes[e]).join(' ');
+
             resolve(retParams);
         });
     });

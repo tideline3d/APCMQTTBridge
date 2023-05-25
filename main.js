@@ -159,7 +159,7 @@ function sendMQTT(device, param, value) {
         //For example a Load of 175 is actually 17.5%  Volatge of 1256 is actually 125.6
         let numericValue = parseFloat(value);
         if (!isNaN(numericValue)) {
-        numericValue /= 10;
+        value = value / 10;
         }
 
       let topic = config.mqtt.prefix + device + '/' + param;

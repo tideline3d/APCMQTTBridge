@@ -155,7 +155,7 @@ function queryUps(device) {
 
 function sendMQTT(device, param, value) {
     try {
-      let topic = config.mqtt.prefix + '/' + device + '/' + param;
+      let topic = config.mqtt.prefix + device + '/' + param;
       mqttClient.publish(topic, value.toString(), { retain: config.mqtt.retain });
       console.log('[' + topic + '] Send: ' + value.toString());
     } catch (error) {

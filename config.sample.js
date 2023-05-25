@@ -11,11 +11,8 @@ config.core.snmpPort = 162; //SNMP trap server bind port
 config.core.snmpAddress = '127.0.0.1'; //SNMP trap server bind address
 
 //MQTT settings
-config.mqtt.host = ''; //MQTT server host
-config.mqtt.port = 1883; //MQTT server port
-config.mqtt.username = ''; //MQTT server username
-config.mqtt.password = ''; //MQTT server password
-config.mqtt.prefix = 'ups'; //MQTT topic prefix
+// MQTT_HOST, MQTT_USERNAME, MQTT_PASSWORD, MQTT_PORT are env vars for the connection setup
+config.mqtt.prefix = 'ups/'; //MQTT topic prefix (needs / at end)
 config.mqtt.retain = true; //MQTT retain flag
 
 //Example device:

@@ -4,6 +4,8 @@ const mqtt = require('mqtt');
 const config = require('./config.js');
 const apcConst = require('./apc_const.js');
 
+const isDebugEnabled = process.env.DEBUG === 'true';
+
 let sessions = {};
 
 const mqttClient = mqtt.connect('tls://' + process.env.MQTT_HOST || config.mqtt.host, {
@@ -155,9 +157,19 @@ function queryUps(device) {
 
 function sendMQTT(device, param, value) {
     try {
+        //Move the decimal over on the numeric values for easier display in other systems.  
+        //For example a Load of 175 is actually 17.5%  Volatge of 1256 is actually 125.6
+        let numericValue = parseFloat(value);
+        if (!isNaN(numericValue)) {
+        numericValue /= 10;
+        }
+
       let topic = config.mqtt.prefix + device + '/' + param;
       mqttClient.publish(topic, value.toString(), { retain: config.mqtt.retain });
-      console.log('[' + topic + '] Send: ' + value.toString());
+  
+      if (isDebugEnabled) {
+        console.log('[' + topic + '] Send: ' + value.toString());
+      }
     } catch (error) {
       console.error('An error occurred while sending MQTT message:', error);
     }

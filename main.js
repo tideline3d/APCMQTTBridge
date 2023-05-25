@@ -6,10 +6,22 @@ const apcConst = require('./apc_const.js');
 
 let sessions = {};
 
-const mqttClient = mqtt.connect('tls://'+config.mqtt.host, {
-    port: config.mqtt.port,
-    username: config.mqtt.username,
-    password: config.mqtt.password
+const mqttClient = mqtt.connect('tls://' + config.mqtt.host, {
+  port: config.mqtt.port,
+  username: config.mqtt.username,
+  password: config.mqtt.password
+});
+
+mqttClient.on('connect', () => {
+  console.log('MQTT client connected');
+});
+
+mqttClient.on('error', (error) => {
+  console.error('MQTT connection error:', error);
+});
+
+mqttClient.on('close', () => {
+  console.log('MQTT client connection closed');
 });
 
 const snmpTrapCallback = function (error, trap) {
@@ -142,11 +154,14 @@ function queryUps(device) {
 }
 
 function sendMQTT(device, param, value) {
-    let topic = config.mqtt.prefix+'/'+device+'/'+param;
-    mqttClient.publish(topic, value.toString(),{ retain: config.mqtt.retain });
-    console.log('['+topic+'] Send: '+value.toString());
-}
-
+    try {
+      let topic = config.mqtt.prefix + '/' + device + '/' + param;
+      mqttClient.publish(topic, value.toString(), { retain: config.mqtt.retain });
+      console.log('[' + topic + '] Send: ' + value.toString());
+    } catch (error) {
+      console.error('An error occurred while sending MQTT message:', error);
+    }
+  }
 
 
 

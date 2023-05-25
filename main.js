@@ -4,8 +4,6 @@ const mqtt = require('mqtt');
 const config = require('./config.js');
 const apcConst = require('./apc_const.js');
 
-const isDebugEnabled = process.env.DEBUG === 'true';
-
 let sessions = {};
 
 const mqttClient = mqtt.connect('tls://' + process.env.MQTT_HOST || config.mqtt.host, {
@@ -167,7 +165,7 @@ function sendMQTT(device, param, value) {
       let topic = config.mqtt.prefix + device + '/' + param;
       mqttClient.publish(topic, value.toString(), { retain: config.mqtt.retain });
   
-      if (isDebugEnabled) {
+      if (process.env.DEBUG.toLowerCase() === 'true') {
         console.log('[' + topic + '] Send: ' + value.toString());
       }
     } catch (error) {

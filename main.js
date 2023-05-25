@@ -153,15 +153,28 @@ function queryUps(device) {
     });
 }
 
-function sendMQTT(device, param, value) {
+  function sendMQTT(device, param, value) {
     try {
         //Move the decimal over on the numeric values for easier display in other systems.  
         //For example a Load of 175 is actually 17.5%  Volatge of 1256 is actually 125.6
-        let numericValue = parseFloat(value);
-        if (!isNaN(numericValue)) {
+      let numericValue = parseFloat(value);
+      const convertParams = [
+        "ups.load",
+        "ups.temperature",
+        "battery.charge",
+        "battery.voltage",
+        "input.voltage",
+        "input.voltage.maximum",
+        "input.voltage.minimum",
+        "input.frequency",
+        "output.voltage",
+        "output.frequency",
+        "output.current"
+      ];  
+      if (convertParams.includes(param) && !isNaN(numericValue)) {
         value = value / 10;
-        }
-
+      }
+  
       let topic = config.mqtt.prefix + device + '/' + param;
       mqttClient.publish(topic, value.toString(), { retain: config.mqtt.retain });
   

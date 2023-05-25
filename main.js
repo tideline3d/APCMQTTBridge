@@ -6,10 +6,10 @@ const apcConst = require('./apc_const.js');
 
 let sessions = {};
 
-const mqttClient = mqtt.connect('tls://' + config.mqtt.host, {
-  port: config.mqtt.port,
-  username: config.mqtt.username,
-  password: config.mqtt.password
+const mqttClient = mqtt.connect('tls://' + process.env.MQTT_HOST || config.mqtt.host, {
+  port: process.env.MQTT_PORT || config.mqtt.port,
+  username: process.env.MQTT_USERNAME || config.mqtt.username,
+  password: process.env.MQTT_PASSWORD || config.mqtt.password
 });
 
 mqttClient.on('connect', () => {
